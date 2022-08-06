@@ -1,0 +1,23 @@
+
+body{
+ background-color: midnightblue
+}
+
+
+body{
+    background: url(https://raw.githubusercontent.com/Suzzanne20/ResourceNekoStation/main/Neko%20Shop%20Banner%20P.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.princ{
+    margin:0 auto;
+    margin-top: 20%;
+    padding: 0%;
+}
+
+.modal-content{
+    background-color: rgb(255, 255, 255);
+    opacity: .95;
+    box-shadow: 0px 0px 7px midnightblue;
+}
+
