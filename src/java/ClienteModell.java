@@ -9,6 +9,12 @@ public class ClienteModell {
     private String direccion;
     private String correo;
     private String telefono;
+    
+    
+    public ClienteModell(){
+     this.nombre="ejemplo";
+    
+    }
 
     public String getCodigo() {
         return codigo;

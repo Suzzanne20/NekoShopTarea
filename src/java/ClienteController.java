@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Suzzanne Acevedo
  */
-@WebServlet(urlPatterns = {"/ClienteModell"})
+@WebServlet(urlPatterns = {"/ClienteController"})
 public class ClienteController extends HttpServlet {
     ClienteModell cliente;
 
@@ -35,26 +35,30 @@ public class ClienteController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             cliente=new ClienteModell();   
             cliente.setCodigo(request.getParameter("cod"));
-            cliente.setCodigo(request.getParameter("cod"));
             cliente.setNombre(request.getParameter("name"));
             cliente.setDireccion(request.getParameter("loc"));
             cliente.setCorreo(request.getParameter("mail"));
             cliente.setTelefono(request.getParameter("tel"));
             
-            
-            
-            
-            
+
             igual.println("<!DOCTYPE html>");
             igual.println("<html>");
-            igual.println("<head>");
-            igual.println("<title>Servlet NewServlet</title>");            
+            igual.println("<head>");    
             igual.println("</head>");
             igual.println("<body>");
-            igual.println("<h1>Mi primer servlet " + request.getContextPath() + "</h1>");
-            igual.println("<h1>Datos del alumno registrado, gracias por registrarse </h1><br>");         
-            igual.println("<h2>" + cliente.getNombre() + "</h2>");
-            igual.println("<h2>" + cliente.getCorreo() + "</h2>");
+            
+            igual.println("<h5>Servlet: " + request.getContextPath() + "</h5><br>");
+            igual.println("<h4>__________________________________________</h4>");
+            igual.println("<h1>Registro del Cliente</h1>"); 
+            igual.println("<h4>__________________________________________</h4><br>");
+            igual.println("<h3>Codigo:    " + cliente.getCodigo() + "</h3>");
+            igual.println("<h3>Nombre:    " + cliente.getNombre() + "</h3>");
+            igual.println("<h3>Direccion: " + cliente.getDireccion() + "</h3>");
+            igual.println("<h3>Email :    " + cliente.getCorreo() + "</h3>");
+            igual.println("<h3>Telefono : " + cliente.getTelefono() + "</h3><br>");
+            igual.println("<h4>__________________________________________</h4>");
+            igual.println("<h1></h1><br>");      
+            igual.println("<a href=\"index.html\" > volver al Inivio --> </a>");
             igual.println("</body>");
             igual.println("</html>");
         }
