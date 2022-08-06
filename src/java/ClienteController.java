@@ -13,9 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author S
+ * @author Suzzanne Acevedo
  */
-@WebServlet(urlPatterns = {"/NewServlet"})
+@WebServlet(urlPatterns = {"/ClienteModell"})
 public class ClienteController extends HttpServlet {
     ClienteModell cliente;
 
@@ -31,9 +31,10 @@ public class ClienteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter respuesta = response.getWriter()) {
+        try ( PrintWriter igual = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            cliente=new ClienteModell();    
+            cliente=new ClienteModell();   
+            cliente.setCodigo(request.getParameter("cod"));
             cliente.setCodigo(request.getParameter("cod"));
             cliente.setNombre(request.getParameter("name"));
             cliente.setDireccion(request.getParameter("loc"));
@@ -44,18 +45,18 @@ public class ClienteController extends HttpServlet {
             
             
             
-            respuesta.println("<!DOCTYPE html>");
-            respuesta.println("<html>");
-            respuesta.println("<head>");
-            respuesta.println("<title>Servlet NewServlet</title>");            
-            respuesta.println("</head>");
-            respuesta.println("<body>");
-            respuesta.println("<h1>Mi primer servlet " + request.getContextPath() + "</h1>");
-            respuesta.println("<h1>Datos del alumno registrado, gracias por registrarse </h1><br>");         
-            respuesta.println("<h2>" + cliente.getNombre() + "</h2>");
-            respuesta.println("<h2>" + cliente.getCorreo() + "</h2>");
-            respuesta.println("</body>");
-            respuesta.println("</html>");
+            igual.println("<!DOCTYPE html>");
+            igual.println("<html>");
+            igual.println("<head>");
+            igual.println("<title>Servlet NewServlet</title>");            
+            igual.println("</head>");
+            igual.println("<body>");
+            igual.println("<h1>Mi primer servlet " + request.getContextPath() + "</h1>");
+            igual.println("<h1>Datos del alumno registrado, gracias por registrarse </h1><br>");         
+            igual.println("<h2>" + cliente.getNombre() + "</h2>");
+            igual.println("<h2>" + cliente.getCorreo() + "</h2>");
+            igual.println("</body>");
+            igual.println("</html>");
         }
     }
 
