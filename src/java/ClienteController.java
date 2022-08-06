@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author S
  */
 @WebServlet(urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
-    Cliente alumno;
+public class ClienteController extends HttpServlet {
+    ClienteModell cliente;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +33,17 @@ public class NewServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter respuesta = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            alumno=new Cliente();    
-            String pass =  request.getParameter("pass");
-            String opcion =  request.getParameter("opcion");
-            alumno.setNombre(request.getParameter("nombre"));
-            alumno.setCorreo(request.getParameter("correo"));
+            cliente=new ClienteModell();    
+            cliente.setCodigo(request.getParameter("cod"));
+            cliente.setNombre(request.getParameter("name"));
+            cliente.setDireccion(request.getParameter("loc"));
+            cliente.setCorreo(request.getParameter("mail"));
+            cliente.setTelefono(request.getParameter("tel"));
+            
+            
+            
+            
+            
             respuesta.println("<!DOCTYPE html>");
             respuesta.println("<html>");
             respuesta.println("<head>");
@@ -46,8 +52,8 @@ public class NewServlet extends HttpServlet {
             respuesta.println("<body>");
             respuesta.println("<h1>Mi primer servlet " + request.getContextPath() + "</h1>");
             respuesta.println("<h1>Datos del alumno registrado, gracias por registrarse </h1><br>");         
-            respuesta.println("<h2>" + alumno.getNombre() + "</h2>");
-            respuesta.println("<h2>" + alumno.getCorreo() + "</h2>");
+            respuesta.println("<h2>" + cliente.getNombre() + "</h2>");
+            respuesta.println("<h2>" + cliente.getCorreo() + "</h2>");
             respuesta.println("</body>");
             respuesta.println("</html>");
         }

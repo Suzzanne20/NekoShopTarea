@@ -3,23 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-public class Cliente {
-    private int codigo;
+public class ClienteModell {
+    private String codigo;
     private String nombre;
-    private String correo;
     private String direccion;
-    
-    public Cliente(){
-        this.nombre="Alumno de ejemplo";
-    }
+    private String correo;
+    private String telefono;
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+    
+
 
     public String getNombre() {
         return nombre;
@@ -43,6 +42,14 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
     
