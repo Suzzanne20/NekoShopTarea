@@ -1,4 +1,5 @@
 
+
 body{
  background-color: midnightblue
 }
@@ -9,20 +10,12 @@ body{
     background-size: cover;
 }
 
-.princ{
-    margin:0 auto;
-    margin-top: 10%;
-    padding: 0%;
-}
-
-.modal-content{
-    background-color: rgb(255, 255, 255);
-    opacity: .95;
-    box-shadow: 0px 0px 7px black;
-}
-
-.promo{
-
-    margin-left: 30rem;
+.main{
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+    margin-top: 5%;
+    background-color: #ffffff;
+    opacity: 0.85;
 
 }

@@ -11,18 +11,18 @@ body{
 
 .princ{
     margin:0 auto;
-    margin-top: 20%;
+    margin-top: 10%;
     padding: 0%;
 }
 
 .modal-content{
     background-color: rgb(255, 255, 255);
     opacity: .95;
-    box-shadow: 0px 0px 7px midnightblue;
+    box-shadow: 0px 0px 7px black;
 }
 
 .promo{
 
-    margin-left: 28rem;
+    margin-left: 30rem;
 
 }

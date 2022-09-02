@@ -1,0 +1,53 @@
+
+body{
+ background-color: midnightblue
+}
+
+
+body{
+    background: url(https://raw.githubusercontent.com/Suzzanne20/ResourceNekoStation/main/Neko%20Shop%20Banner%20P.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+.modal-content{
+    background-color: rgb(255, 255, 255);
+    opacity: .95;
+    box-shadow: 0px 0px 7px black;
+}
+
+.container {
+    width: 80%;
+    
+}
+
+.content{
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(3, auto);
+   
+}
+.content .main{
+    grid-column: span 4;
+}
+
+.aside{
+    background-color: #ffffff;
+    grid-column: span 2;
+
+    
+}
+
+.footer{
+    background-color: #ffffff;
+    opacity: 0.95;
+    height: 50px;
+    padding: 10px;
+    border-radius: 4px;
+    grid-column: span 6;
+    
+}
