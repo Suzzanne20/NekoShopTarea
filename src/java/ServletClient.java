@@ -67,7 +67,8 @@ public class ServletClient extends HttpServlet {
             "      <th scope=\"col\">NOMBRE</th>\n" +
             "      <th scope=\"col\">DIRECCION</th>\n" +
             "      <th scope=\"col\">EMAIL</th>\n" +
-            "      <th scope=\"col\">TELEFONO</th>\n" +
+            "      <th scope=\"col\">TELEFONO</th>\n" +         
+            "      <th scope=\"col\">ACCION</th>\n" +
             "      </tr></thead><tbody>");
             for (int i=0; i<registro.length;i++){
                 if(!registro[i].getCodigo().isEmpty()){
@@ -76,8 +77,8 @@ public class ServletClient extends HttpServlet {
             "      <td>"+registro[i].getNombre() +"</td>\n" +
             "      <td>"+registro[i].getDireccion() +"</td>\n" +
             "      <td>"+registro[i].getCorreo() +"</td>\n" +
-            "      <td>"+registro[i].getTelefono() +"</td></tr>");
-                
+            "      <td>"+registro[i].getTelefono() +"</td>" +
+            "      <td><button type=\"button\" class=\"btn btn-danger\">Eliminar</button></td></tr>");                 
                 }
             }                     
             out.println("</tbody></table></div>");

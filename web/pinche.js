@@ -1,5 +1,5 @@
 window.onload=function(){
-    alert("Bienvenido a Neko Registros");   
+    alert("verificando cambios");   
 }
 
 function comeDom (){
@@ -25,7 +25,7 @@ function dataEje (){
     other.append('Estas seguro de realizar el registro?');
     boton.append('Guardar');
     buttond.append('Cancelar');
-    boton.setAttribute("class","btn btn-warning"); boton.setAttribute("oneclick","sendData()"); 
+    boton.setAttribute("class","btn btn-warning");boton.setAttribute("type","button"); boton.setAttribute("oneclick","sendData()"); 
     buttond.setAttribute("type","reset"); buttond.setAttribute("class","btn btn-dark");
     let container = document.getElementById('nuevo');
     container.append(other);
@@ -53,10 +53,18 @@ form.addEventListener('submit', (event)=> {
 
 function sendData(){
 	const XHR = new XMLHttpRequest();
-	  var formData = new FormData(document.getElementById('formu'));
-	  XHR.addEventListener('ok', (event) => {alert('La informacion ah sido enviada');});
+	  var formData = new URLSearchParams(new FormData(document.getElementById('formu'))).toString();
 	  XHR.addEventListener('error',(event) => {alert('Oops! ah ocurrido un error (T_T)');});
-	  XHR.open('POST', '/ServletClient');
-	  XHR.send(formData);	
+	  XHR.open('POST', '\ServletClient', true);
+          XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    
+          XHR.onload = () => { if (XHR.readyState === XHR.DONE && XHR.status === 200){
+              document.getElementById('regTab').innerHTML=XHR.response; susMsj();}};
+          XHR.send(formData);	
 }
 
+function susMsj(){ Swal.fire({
+  icon: 'success',
+  title: 'Registro realizado',
+  showConfirmButton: false,
+  timer: 1500 })}
