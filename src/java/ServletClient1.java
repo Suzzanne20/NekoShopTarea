@@ -16,12 +16,11 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * @author Suzzanne Acevedo
  */
-@WebServlet(urlPatterns = {"/ServletClient"})
-public class ServletClient extends HttpServlet {
+@WebServlet(urlPatterns = {"/ServletClient1"})
+public class ServletClient1 extends HttpServlet {
     Cliente cliente;
     ClienteVec regCliente;
     Cliente[] registro;
-    StringBuffer objOut = new StringBuffer();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,52 +34,64 @@ public class ServletClient extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            
-            regCliente=new ClienteVec();
-            
-            String control = request.getParameter("control");
-            
-            if(control.toUpperCase().equals("GUARDAR")){
+            /* TODO output your page here. You may use following sample code. */
             cliente=new Cliente(
             Integer.parseInt(request.getParameter("cod")),
             request.getParameter("name"),
             request.getParameter("loc"),
             request.getParameter("mail"),
             request.getParameter("tel"));
-            
-            regCliente.saveCli(cliente);
-            }else if (control.toUpperCase().equals("ELIMINAR")){
-             int codDelete = Integer.parseInt(request.getParameter("codigoBD"));
-             regCliente.eliminarclienteBd(codDelete);
-            }
-                   
-            
-        //if(regCliente==null){regCliente=new ClienteVec();}
+        if(regCliente==null){regCliente=new ClienteVec();}
+        regCliente.saveCli(cliente); 
         
         if(regCliente.saveCliBD(cliente)){out.println(1);}else{out.println(0);}
-        regCliente.bdView(objOut);
-        out.write(objOut.toString());
         
+        
+        
+        registro=regCliente.gimmeCli();
+          
         /*
-        registro=regCliente.gimmeCli(); //<<<<<<<<<<<<< 
-        
-        for (int i=0; i<registro.length;i++){
-                if(!registro[i].getNombre().isEmpty()){
-                out.println("<tr><th scope=\"row\">"+ registro[i].getCodigo()+"</th>\n" +
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css' >");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js' ></script>"+
+            "          <link rel=\"shortcut icon\" href=\"https://raw.githubusercontent.com/Suzzanne20/ResourceNekoStation/main/Neko-icon.ico\" type=\"image/x-icon\"/>"+
+            "          </script><link href=\"csserv.css\" rel=\"stylesheet\" type=\"text/css\"/> ");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<nav class=\"navbar navbar-dark bg-dark\"><div class=\"container-fluid row text-center \"> <div class=\"row align-items-center\">\n" +
+            "          <a class=\"navbar-brand col\" href=\"index.html\"><img src=\"https://raw.githubusercontent.com/Suzzanne20/ResourceNekoStation/main/Neko%20icon.png\" alt=\"\" width=\"30\" height=\"30\" class=\"d-inline-block align-text-top\">Neko Shop</a>\n" +
+            "          <a class=\"navbar-brand col \" href=\"ServletClient\">Clientes</a>\n" +
+            "          <a class=\"navbar-brand col \" href=\"index1.html\">Registro</a>\n" +
+            "          <a class=\"navbar-brand col \" href=\"Promos.html\">Promociones</a>\n" +
+            "          <a class=\"navbar-brand col \" href=\"https://nekoshopgt.ecu.red/?fbclid=IwAR35lHTEkOxyFAEKAd2LblNHNTgu0f61fcEBXT3T-mi0HyGBe-6dp7RxpCw#/place-detail-page\" target=\"_blank\">Tienda</a>\n" +
+            "          </div></div></nav>");
+            
+            out.println("<main class=\"main \"><div class=\"container text-center \"> "  +
+            "<br><h1>Clientes Registrados</h1><br><table class=\"table table-dark table-hover\"><thead><tr>\n" +
+            "      <th scope=\"col\">COD</th>\n" +
+            "      <th scope=\"col\">NOMBRE</th>\n" +
+            "      <th scope=\"col\">DIRECCION</th>\n" +
+            "      <th scope=\"col\">EMAIL</th>\n" +
+            "      <th scope=\"col\">TELEFONO</th>\n" +         
+            "      <th scope=\"col\">ACCION</th>\n" +
+            "      </tr></thead><tbody>");
+            for (int i=0; i<registro.length;i++){
+                if(!registro[i].getCodigo().isEmpty()){
+                out.println("    <tr>\n" +
+            "      <th scope=\"row\">"+ registro[i].getCodigo()+"</th>\n" +
             "      <td>"+registro[i].getNombre() +"</td>\n" +
             "      <td>"+registro[i].getDireccion() +"</td>\n" +
             "      <td>"+registro[i].getCorreo() +"</td>\n" +
             "      <td>"+registro[i].getTelefono() +"</td>" +
             "      <td><button type=\"button\" class=\"btn btn-danger\">Eliminar</button></td></tr>");                 
                 }
-            }  
-        out.println(1);
-        */
-        
+            }                     
+            out.println("</tbody></table></div>");
+            out.println("</main></body></html>");*/
         }
-             
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

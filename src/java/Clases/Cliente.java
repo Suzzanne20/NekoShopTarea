@@ -8,13 +8,13 @@ package Clases;
  * @author Suzzanne Acevedo
  */
 public class Cliente {
-    private String codigo;
+    private int codigo;
     private String nombre;
     private String direccion;
     private String correo;
     private String telefono;
 
-    public Cliente(String codigo, String nombre, String direccion, String correo, String telefono) {
+    public Cliente(int codigo, String nombre, String direccion, String correo, String telefono) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -24,9 +24,9 @@ public class Cliente {
     
     public Cliente(){ this.nombre="Nekito"; }
 
-    public String getCodigo() {return codigo; }
+    public int getCodigo() {return codigo; }
 
-    public void setCodigo(String codigo) { this.codigo = codigo; }
+    public void setCodigo(int codigo) { this.codigo = codigo; }
 
     public String getNombre() {return nombre;}
 

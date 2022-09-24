@@ -10,9 +10,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="https://raw.githubusercontent.com/Suzzanne20/ResourceNekoStation/main/Neko-icon.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link href="estilo.css" rel="stylesheet" type="text/css"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-        <script src="pinche.js"></script> 
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="otrav.js"></script>  
     </head>
     <body>
     
@@ -27,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
           </div></div>
         </nav>
         
-    <div class="modal-dialog text-center">
+     <div class="content"><main class="main"> <div class="modal-dialog text-center">
      <div class="col-12 princ">
      <div class="modal-content">
         <div class="col-12 logo">           
@@ -38,36 +40,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div class="container">  
         <h2>Bienvenido</h2>
         
-        <form action="ServletClient" class="col-12" id="formu">
+        <form method="POST" action="ServletClient" class="col-12" id="formu" name="formu">
                   <div class="input-group mb-3">
                       <span class="input-group-text col-3">Codigo</span>
-                      <input type="text" class="form-control" placeholder="Ingrese codigo de cliente" required name="cod">
+                      <input type="text" class="form-control" placeholder="Ingrese codigo de cliente" required name="cod" id="cod">
+                      <input type="hidden" name="control" value="GUARDAR">
                   </div>
                   <div class="input-group mb-3">
                       <span class="input-group-text col-3">Nombre</span>
-                      <input type="text" class="form-control" placeholder="Ingrese nombre y apellido" required name="name">
+                      <input type="text" class="form-control" placeholder="Ingrese nombre y apellido" required name="name" id="name">
                   </div>
                   <div class="input-group mb-3">
                       <span class="input-group-text col-3">Direccion</span>
-                      <input type="text" class="form-control" placeholder="Ingrese su direccion" required name="loc">
+                      <input type="text" class="form-control" placeholder="Ingrese su direccion" required name="loc" id="loc">
                   </div>
                   <div class="input-group mb-3">
                       <span class="input-group-text col-3">Email</span>
-                      <input type="email" class="form-control" placeholder="exampleNeko@Email.com" required name="mail">
+                      <input type="email" class="form-control" placeholder="exampleNeko@Email.com" required name="mail" id="mail">
                   </div>
                   <div class="input-group mb-3">
                       <span class="input-group-text col-3">Telefono</span>
-                      <input type="text" class="form-control" placeholder="Ingrese su numero de telefono" required name="tel">
+                      <input type="text" class="form-control" placeholder="Ingrese su numero de telefono" required name="tel" id="tel">
                   </div>
                                           
-            <button type="button" onclick="dataEje()" class="btn btn-info" name="confi" id="IdConfi">Validar</button><br><br><div id='nuevo'></div><br>
-            <!--<button type="submit" onclick="sendData()" class="btn btn-warning">Guardar</button>
-            <button type="reset" class="btn btn-dark">Cancelar</button> -->
-           
-
-        </form> </div>
-         
-                <table class="table table-dark table-hover">
+            <!--<button type="button" onclick="dataEje()" class="btn btn-info">Validar</button><br><br><div id='nuevo'></div><br>-->
+            <button type="button" onclick="sendData()" class="btn btn-info">Guardar</button>
+            <button type="reset" class="btn btn-dark">Cancelar</button><br><br><br>
+        </form></div></div></div></div> </main>
+        <aside class="aside"><div class="modal-content text-center">
+            <h2>Registros de Clientes </h2>   
+            <table class="table table-dark table-hover">
                     <thead><tr>
                             <td>COD</td>
                             <td>NOMBRE</td>
@@ -76,10 +78,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <td>TELEFONO</td>
                             <td>ACCION</td>
                     </tr></thead> <tbody id="regTab">  </tbody></table>
-     
-     
-     
-     </div></div></div> 
+        <br><div class="text-center"> <button type="button" onclick="f5()" class="btn btn-warning">Recargar</button></div><br>   
+        </div></aside></div>
+        
+        
         
     </body>
 </html>

@@ -26,3 +26,22 @@ body{
     margin-left: 30rem;
 
 }
+
+.content{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(2, auto);
+    
+}
+.content .main{
+    grid-column: span 3;  
+    margin-left: 15%;
+}
+
+
+.aside{
+    margin-top: 5%;
+    margin-right: 15%;
+    grid-column: span 4;
+}

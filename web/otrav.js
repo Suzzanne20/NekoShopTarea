@@ -1,5 +1,7 @@
+/* global Swal */
+
 window.onload=function(){
-    alert("verificando cambios");   
+    alert("Se quiere registrar Master?");   
 }
 
 function comeDom (){
@@ -15,6 +17,11 @@ function comeDom (){
     cliente.correo=mail.value;
     cliente.telefono=tel.value;
     console.log(cliente);
+    cod.value='';
+    name.value='';
+    loc.value='';
+    mail.value='';
+    tel.value='';
 }
 
 function dataEje (){
@@ -43,28 +50,57 @@ function dataEje (){
     else{alert("No se realizo el registro");}
     }*/
 
-let form = document.getElementById('formu');
-function retornarValor(input){ return !(input.value.trim()===''); }
-
-form.addEventListener('submit', (event)=> {
-   requiredFields.forEach((input)=> {valid = valid|requireValue(input,input);});
-   if(!valid){ event.preventDefault();}
-});
-
 function sendData(){
 	const XHR = new XMLHttpRequest();
 	  var formData = new URLSearchParams(new FormData(document.getElementById('formu'))).toString();
 	  XHR.addEventListener('error',(event) => {alert('Oops! ah ocurrido un error (T_T)');});
-	  XHR.open('POST', '\ServletClient', true);
+	  XHR.open('POST', 'ServletClient', true);
           XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     
           XHR.onload = () => { if (XHR.readyState === XHR.DONE && XHR.status === 200){
-              document.getElementById('regTab').innerHTML=XHR.response; susMsj();}};
+            console.log("response => " + XHR.response);
+            document.getElementById('regTab').innerHTML=XHR.response; susMsj('Cliente guardado exitosamente'); clearFormu();}};
           XHR.send(formData);	
 }
 
-function susMsj(){ Swal.fire({
+function clearFormu(){
+    document.getElementById("cod").value='';
+    document.getElementById("name").value='';
+    document.getElementById("loc").value='';
+    document.getElementById("mail").value='';
+    document.getElementById("tel").value='';
+}
+
+function susMsj(msj){
+  Swal.fire({
   icon: 'success',
-  title: 'Registro realizado',
+  title: msj,
   showConfirmButton: false,
-  timer: 1500 })}
+  timer: 1500
+})
+}
+
+function eliminarcliente(codigo){
+    const XHR = new XMLHttpRequest();
+    var formData = new URLSearchParams(new FormData());
+
+    XHR.addEventListener('error', (event) => {
+      alert('Oops! Something went wrong.');
+    });
+
+    XHR.open('POST', 'ServletClient', true);
+    XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    XHR.onload = () => {
+      if (XHR.readyState === XHR.DONE && XHR.status === 200) {
+        console.log("response => " + XHR.response);
+        susMsj('Adiooos Neko Cliente');
+        setTimeout( 2000 );
+      }
+    };        
+    formData.append('codigoBD', codigo);
+    formData.append('control', 'ELIMINAR');
+    XHR.send(formData); 
+
+}
+function f5() { window.location.reload();};
